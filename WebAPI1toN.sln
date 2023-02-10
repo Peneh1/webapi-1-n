@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SS3Library", "SS3Library\SS3Library\SS3Library.csproj", "{F105DBA5-CB93-473E-ACC2-814BB73DE110}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI1toN", "WebAPI1toN\WebAPI1toN.csproj", "{0872D8BF-FE90-44BF-BAB6-F79D100CD5FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F105DBA5-CB93-473E-ACC2-814BB73DE110}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F105DBA5-CB93-473E-ACC2-814BB73DE110}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F105DBA5-CB93-473E-ACC2-814BB73DE110}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F105DBA5-CB93-473E-ACC2-814BB73DE110}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0872D8BF-FE90-44BF-BAB6-F79D100CD5FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0872D8BF-FE90-44BF-BAB6-F79D100CD5FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0872D8BF-FE90-44BF-BAB6-F79D100CD5FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0872D8BF-FE90-44BF-BAB6-F79D100CD5FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F1371ED2-1A27-4A07-843D-F372C9ED7291}
+	EndGlobalSection
+EndGlobal

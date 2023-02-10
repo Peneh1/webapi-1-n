@@ -1,0 +1,223 @@
+﻿@model WebAPI1toN.Models.SearchResultsModel
+@{
+    ViewData["Title"] = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <h1><b>Demonstration of WebAPI1toN - Search Results</b></h1>
+    </head>
+
+    <body>
+        <div class="row">
+            <div class="col-md-10">
+                <p><b>Enrolled template(s) that are already registered into the in-memory database</b></p>
+                <div class="row-md-10">
+                    <tr align="left">
+                        @{Int32 i = 0;}
+                        @foreach (var image in ViewData["AllImages"] as List<string>)
+                        {
+                            var idnumber = "FPImage" + @i;
+                            var srcdata = string.Format("data:image/bmp;base64,{0}", image);
+                            <img id="@idnumber" width=105 height=150 src="@srcdata"/>
+                            i++;
+                            if ((@i % 5) == 0)
+                            {
+                                <br/>
+                            }
+                        } 
+                    </tr>
+                    <br />
+                    <tr>
+                        <td>
+                            <b>Session ID</b>
+                        </td>
+                        <td>
+                            <textarea id="sessioninfo" rows="1" cols="20" readOnly="true" style="resize:none">@ViewData["SessionInfo"]</textarea>
+                        </td>
+                    </tr>
+                    </br></br>
+                    <tr>
+                        <p>
+                            <b>Use one of the options below to compare a fingerprint against the database of enrolled template(s)</b>
+                        </p>
+                    </tr>
+                </div>
+                <div class="row">
+                    <table id="Enroll" width="1012" border="0" align="left" cellpadding="0" cellspacing="0">
+                        <tbody>
+                        <div id="IdentifySection">
+                        <tr>
+                            <td class="auto-style2" valign="top">&nbsp;</td>
+                            <td><b>Search #1 Identify a single finger that matches the scan</b></td>
+                            <td class="auto-style2" valign="top">&nbsp;</td>
+                            <td class="style3">
+                                <input id="submit0" type="submit" width=120 value="Scan to Identify" onclick="CallSGIFPGetData(SuccessFuncIdentify, ErrorFunc)">
+                            </td>
+                            <td>&nbsp;</td>
+                            <td><textarea id="IdentifyUser" rows="1" cols="50" readOnly="true" style="resize:none">Identify User Results</textarea></td>
+                            <td>&nbsp;</td>
+                            <td class="style3">
+                                <img id="FPImageIdentity" height=300 width=210 src="~/Images/PlaceFinger.bmp"> <br>
+                            </td>
+                            <br>
+                        </tr>
+                        </div>
+
+                        <div id="CandListSection">
+                        <tr>
+                            <td class="auto-style2" valign="top">&nbsp;</td>
+                            <td><b>Search #2 Create a candidate list of possible matching fingerprints with match score and ranking</b></td>
+                            <td class="auto-style2" valign="top">&nbsp;</td>
+                            <td class="style3">
+                                <input id="submit0" type="submit" width=120 value="Scan to Candiate List" onclick="CallSGIFPGetData(SuccessFuncCandidateList, ErrorFunc)">
+                            </td>
+                            <td>&nbsp;</td>
+                            <td><textarea id="CandidateList" rows="5" cols="50" readOnly="true" style="resize:none">Candidate List Results</textarea></td>
+                            <td>&nbsp;</td>
+                            <td class="style3">
+                                <img id="FPImageCandidateList" height=300 width=210 src="~/Images/PlaceFinger.bmp"> <br>
+                            </td>
+                            <br>
+                        </tr>
+                        </div>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </body>
+
+    <script type-"text/javascript">
+    var imageCount = 0;
+
+    function SuccessFuncIdentify(result) {
+        if (result.ErrorCode == 0) {
+            /* 	Display BMP data in image tag
+                BMP data is in base 64 format 
+            */
+
+            if (result != null && result.BMPBase64.length > 0) {
+                document.getElementById("FPImageIdentity").src = "data:image/bmp;base64," + result.BMPBase64;
+            }
+
+            var templatedata = {
+                'isotemplatebase64': result.TemplateBase64
+                , 'sessionid': document.getElementById("sessioninfo").value
+            };
+
+            // View data, must use JSON.stringify(...)
+            // alert("Fingerprint Template:" + JSON.stringify(templatedata));
+
+            $.ajax({
+                method: 'POST',
+                url: '@Url.Action("IdentifyPersonMatch","WebAPI1toN")',
+                data: templatedata,
+                //success: function (response) {
+                //    alert("SUCCESS!" + response.found + ";" + "matcher=" + response.match);
+                //},
+                success: function(response) {
+                    if (response.found == "true") {
+                        document.getElementById("IdentifyUser").value = "Identify User = [" + response.match + "]";
+                    }
+                    else {
+                        document.getElementById("IdentifyUser").value = response.error;
+                    }
+                },
+                failure: function (response) {
+                   alert("FAILURE...." + response.error);
+                },
+                error: function (response) {
+                   alert("ERROR...." + response.error);
+                }
+            });
+        }
+        else {
+            alert("Fingerprint Capture Error Code:  " + result.ErrorCode + ".\nDescription:  " + ErrorCodeToString(result.ErrorCode) + ".");
+        }
+    }
+
+    function SuccessFuncCandidateList(result) {
+        if (result.ErrorCode == 0) {
+            /* 	Display BMP data in image tag
+                BMP data is in base 64 format 
+            */
+
+            if (result != null && result.BMPBase64.length > 0) {
+                document.getElementById("FPImageCandidateList").src = "data:image/bmp;base64," + result.BMPBase64;
+            }
+
+            var templatedata = {
+                'isotemplatebase64': result.TemplateBase64
+                , 'sessionid': document.getElementById("sessioninfo").value
+            };
+
+            // View data, must use JSON.stringify(...)
+            // alert("Fingerprint Template:" + JSON.stringify(templatedata));
+
+            $.ajax({
+                method: 'POST',
+                url: '@Url.Action("SearchMatches","WebAPI1toN")',
+                data: templatedata,
+                //success: function (response) {
+                //    alert("SUCCESS!" + response.found + ";" + "matcher=" + response.match);
+                //},
+                success: function(response) {
+                    if (response.found == "true") {
+                        document.getElementById("CandidateList").value = response.match;
+                    }
+                    else {
+                        document.getElementById("CandidateList").value = response.error;
+                    }
+                },
+                failure: function (response) {
+                   alert("FAILURE...." + response.error);
+                },
+                error: function (response) {
+                   alert("ERROR...." + response.error);
+                }
+            });
+        }
+        else {
+            alert("Fingerprint Capture Error Code:  " + result.ErrorCode + ".\nDescription:  " + ErrorCodeToString(result.ErrorCode) + ".");
+        }
+    }
+
+
+    function ErrorFunc(status) {
+        /* 	
+            If you reach here, user is probabaly not running the 
+            service. Redirect the user to a page where he can download the
+            executable and install it. 
+        */
+        alert("Check if SGIBIOSRV is running; status = " + status + ":");
+    }
+
+    function CallSGIFPGetData(successCall, failCall) {
+        var uri = "https://localhost:8443/SGIFPCapture";
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                fpobject = JSON.parse(xmlhttp.responseText);
+                successCall(fpobject);
+            }
+            else if (xmlhttp.status == 404) {
+                failCall(xmlhttp.status)
+            }
+        }
+        xmlhttp.onerror = function () {
+            failCall(xmlhttp.status);
+        }
+        var params = "Timeout=" + "10000";
+        params += "&Quality=" + "50";
+        params += "&licstr=" + encodeURIComponent(secugen_lic);
+        params += "&templateFormat=" + "ISO";
+        xmlhttp.open("POST", uri, true);
+        xmlhttp.send(params);
+    }
+
+    </script>
+</html>

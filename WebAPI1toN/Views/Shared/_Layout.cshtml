@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WebAPI1toN</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WebAPI1toN.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Pages" asp-action="Home">Demo Home</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="~/docs/SECUGEN_WEB_SERVICE_API_DOC.pdf" target="_blank" rel="noreferrer">WebAPI1:N Doc</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Pages" asp-action="Downloads">Downloads</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Pages" asp-action="SingleScan">Simple Scan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Pages" asp-action="AdvancedScan">Advanced Scan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="WebAPI1toN" asp-action="Enroll">WebAPI 1:N</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div style="text-indent: 50px;"><h1><b>WebAPI 1:N</b></h1></div>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            @@ @DateTime.Now.Year - SecuGen Corporation - WebAPI1:N
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+    <script type="text/javascript">
+    // nice global area, so that only 1 location, contains this information
+    // var secugen_lic = "hE/78I5oOUJnm5fa5zDDRrEJb5tdqU71AVe+/Jc2RK0=";   // webapi.secugen.com
+    var secugen_lic = ""; 
+
+    function ErrorCodeToString(ErrorCode) {
+        var Description;
+        switch (ErrorCode) {
+            // 0 - 999 - Comes from SgFplib.h
+            // 1,000 - 9,999 - SGIBioSrv errors 
+            // 10,000 - 99,999 license errors
+            case 51:
+                Description = "System file load failure";
+                break;
+            case 52:
+                Description = "Sensor chip initialization failed";
+                break;
+            case 53:
+                Description = "Device not found";
+                break;
+            case 54:
+                Description = "Fingerprint image capture timeout";
+                break;
+            case 55:
+                Description = "No device available";
+                break;
+            case 56:
+                Description = "Driver load failed";
+                break;
+            case 57:
+                Description = "Wrong Image";
+                break;
+            case 58:
+                Description = "Lack of bandwidth";
+                break;
+            case 59:
+                Description = "Device Busy";
+                break;
+            case 60:
+                Description = "Cannot get serial number of the device";
+                break;
+            case 61:
+                Description = "Unsupported device";
+                break;
+            case 63:
+                Description = "SgiBioSrv didn't start; Try image capture again";
+                break;
+            default:
+                Description = "Unknown error code or Update code to reflect latest result";
+                break;
+        }
+        return Description;
+    }
+    </script>
+
+</body>
+</html>

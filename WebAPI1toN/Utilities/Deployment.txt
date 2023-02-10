@@ -1,0 +1,47 @@
+10:56 AM 9/20/2022
+
+deployment
+https://thecodeblogger.com/2021/05/09/how-to-publish-asp-net-core-web-applications-to-iis/
+
+https://social.msdn.microsoft.com/Forums/en-US/e5d6079f-06c6-475e-a319-d0c2bd053725/aspnet-core-mvc-deploying-to-iis-error-http-error-50019?forum=aspconfiganddeploy
+
+
+Install 
+.NET Core hosting bundle -> installs
+	.NET Core Runtime
+	.NET Core Library
+	.NET Core Module
+	
+
+1:57 PM 9/21/2022
+IIS Setup:
+1.  Web Server Install - install .NET Core hosting bundle - "dotnet-hosting-6.0.9-win.exe" - verified v6.0.9.
+2.  Create New Web Site - WebSearch.   Ensure that you have a unique Application pool name for WebSearch.
+3.  Create Directory, and put 2 SS3 libraries -> SecuSearchAPI.dl and SecuSearchAPI.NET.dll into that directory.  Take the directory made, and ensure that is in the Windows path of searchable locations.
+4.  Set gpedit.msc - "Lock Pages in Memory" - settings for group IIS_USERS
+5.  Create Windows directory for SS3 librarires: secusearchapi.dll & SecuSearchAPI.Net.dll.  Make sure to add to Windows "Path"
+
+Common Errors and how to solve:
+1.  Save Empty FPDB_FAILURE - "SECUSEARCHAPI_DLL_UNLOADED" means that the web site was not able to find the SecuSearch libraries.
+2.  *** NO INIT, means that the SS3 has failed.   Usually means, that the SS3 "Lock Pages in Memory" setting needs to be configured per user.  Add User Group -> IIS-IUSRS to the Local Group Policy Editor.  Local Computer Policy -> Computer Configuration -> Windows Settings -> Security Settings -> Local Policies -> User Rights Assignment -> Lock pages in memory.   Reboot computer.
+
+
+12:17 PM 9/27/2022
+Web Server Cleanup
+1.  >taskschd.msc
+2.  Import Task -> WebSearch-Data_cleanup.xml
+
+
+
+dotnet publish
+https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-publish
+
+dotnet publish WebSearch.sln --configuration Release --self-contained true --output .\Publish --runtime win-x64
+
+
+
+***********************************************
+11:34 AM 9/27/2022
+Web Server Cleanup
+
+https://blog.netwrix.com/2018/07/03/how-to-automate-powershell-scripts-with-task-scheduler/

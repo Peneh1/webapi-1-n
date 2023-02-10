@@ -1,0 +1,103 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>@ViewData["Title"]</title>
+    </head>
+
+    <div class="row">
+        <h4><b>How to Access a SecuGen Fingerprint Reader from a Browser-Based Application</b></h4>
+        <p>
+            SecuGen WebAPI was designed to allow software developers to easily add fingerprint biometric functionality to their browser-based applications, thus bring increased security and convenience for there users.  The provided APIs can be used to allow most modern web browsers to access the SecuGen reader for scanning fingerprints.
+        </p>
+        <p>
+            <strong>WebAPI 1:1</strong> provides scanning, template generating, and client-side 1:1 matching functions.  For application that use 1:1 matching, a fingerprint is scanned and compared to users's known fingerprint, usually with the purpose of <strong>verifying</strong> the user.
+        </p>
+        <p>
+            <strong>WebAPI 1:N</strong> provides scaning, template generating, and server-side 1:N matching functions.  For applications that use 1:N matching, a fingerprint is scanned and compared against an array of fingerprints in a database, usually with the purpose of <strong>identifying</strong> a user.
+        </p>
+        <p2>
+           Built on Microsoft’s .NET Core technology, WebAPI 1:N harnesses the power of SecuSearch 3’s rapid 1:N matching engine to search for a fingerprint match within a database of fingerprints. Additional APIs are provided to give two types of results: a single fingerprint match or a list of potential fingerprint match candidates. With a list of candidates, the application can be configured to make a final determination of whether a fingerprint was successfully found to match.
+        </p2>
+        <p></p>
+        <p3>
+            <b>Supported SecuGen Fingerprint Readers currently include:</b><br>
+            Hamster Air (HU-AIR)<br>
+            Hamster Pro (HUPx)<br>
+            Hamster Pro 10 (HU10)<br>
+            Hamster Pro 20 (HU20-A, HU20-AP, HU20)<br>
+            Hamster Pro 30 (HU30)<br>
+            Hamster IV (HSDU04P)<br>
+            Hamster Plus (HSDU03P)<br>
+        </p3>
+        <p></p>
+        <p>
+            This website provides simple demos that allow you to use your SecuGen fingerprint reader with your web browser to perform Fingerprint Scanning, 1:1 Fingerprint Matching, and 1:N Fingerprint Matching with a temporary database that you create.
+        </b></p>
+        <p>
+            <h5><strong><em><u>Quick note about fingerprint privacy</u></em></strong></h5><br>
+            <em><u>The demos do not require scanned fingerprint to be connected to other personally identifiable information.  All scanned fingerprints and enrolled templates will automatically be deleted after you close your web browser.</u></em>
+        </b></p>
+        <p>
+            Follow the instructions <b><a href="#Instructions">below </a></b>to get started.
+        </p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-20">
+            <h5><b>Web page in Chrome</b></h5>
+            <br />
+            <img alt="" src="~/Images/chrome.jpg" />
+        </div>
+        <div class="col-md-20">
+            <h5><b>1 to Many Search Results web page in MS Edge</b></h5>
+            <br />
+            <img alt="" src="~/Images/MSEdge.jpg" />
+        </div>
+    </div>
+
+    <div class="row">
+        <p>
+            </b>
+        </p>
+        <p>
+           <b>Instructions before running the web application demos</b>
+        </p>
+        <div class="col-md-10">
+            <a name="Instructions"></a>
+            <p>
+                1.	You should have a Windows operating system (Windows 10 or later) running on your PC.
+             </p>
+            <p>
+                2.	Connect a SecuGen fingerprint reader to your PC, and install the <b><a href="http://www.secugen.com/download/drivers.htm">driver</a></b> (you must have admin privileges).
+             </p>
+            <p>
+                3.	Download and install one of the following Web API Clients (you must have admin privileges)
+            </p>
+            <p style="margin-left:40px">
+                For Windows 64-bit machines <b><a href="~/DownloadClient/SGI_BWAPI_Win_64bit.exe">Click Here</a></b>
+            </p>
+            <p style="margin-left:40px">
+                For Windows 32-bit machines <b><a href="~/DownloadClient/SGI_BWAPI_Win_32bit.exe">Click Here</a></b>
+            </p>
+            <p style="margin-left:40px">
+                To download WebAPI1:N doc <b><a href="~/docs/SECUGEN_WEB_SERVICE_API_DOC.pdf" download="SECUGEN_WEB_SERVICE_API_DOC.pdf">Click Here</a></b>
+            </p>
+            <p>
+                4.	Click on a link below to run the demo
+            </p>
+            <p>
+                <b><a style="margin-left:40px; color:rgb(0000EE);" asp-area="" asp-controller="Pages" asp-action="SingleScan">Simple Scan</a></b>
+            </p>
+            <p>
+                <b><a style="margin-left:40px; color:rgb(0000EE);" asp-area="" asp-controller="Pages" asp-action="AdvancedScan">Advanced Scan</a></b>
+            </p>
+            <p>
+                <b><a style="margin-left:40px; color:rgb(0000EE);" asp-area="" asp-controller="WebAPI1toN" asp-action="Enroll">1:N Matching</a></b>
+            </p>
+        </div>
+    </div>
+
+</html>
