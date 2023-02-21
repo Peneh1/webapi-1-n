@@ -1,34 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "F:\\UpWork\\Peneh\\webapi-1-n\\SS3Library\\SS3Library\\SS3Library.csproj": {}
+    "C:\\Users\\Administrator\\Source\\Repos\\Peneh1\\webapi-1-n\\SS3Library\\SS3Library\\SS3Library.csproj": {}
   },
   "projects": {
-    "F:\\UpWork\\Peneh\\webapi-1-n\\SS3Library\\SS3Library\\SS3Library.csproj": {
+    "C:\\Users\\Administrator\\Source\\Repos\\Peneh1\\webapi-1-n\\SS3Library\\SS3Library\\SS3Library.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\UpWork\\Peneh\\webapi-1-n\\SS3Library\\SS3Library\\SS3Library.csproj",
+        "projectUniqueName": "C:\\Users\\Administrator\\Source\\Repos\\Peneh1\\webapi-1-n\\SS3Library\\SS3Library\\SS3Library.csproj",
         "projectName": "SS3Library",
-        "projectPath": "F:\\UpWork\\Peneh\\webapi-1-n\\SS3Library\\SS3Library\\SS3Library.csproj",
-        "packagesPath": "C:\\Users\\wille\\.nuget\\packages\\",
-        "outputPath": "F:\\UpWork\\Peneh\\webapi-1-n\\SS3Library\\SS3Library\\obj\\",
+        "projectPath": "C:\\Users\\Administrator\\Source\\Repos\\Peneh1\\webapi-1-n\\SS3Library\\SS3Library\\SS3Library.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Administrator\\Source\\Repos\\Peneh1\\webapi-1-n\\SS3Library\\SS3Library\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\wille\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 18.1.config",
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\DevExpress 18.1\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.devexpress.com/qkWiZZAstHEa2MeCUhbTIyDhhSxXGQ9hdTglx4zb7kyDIue2Wb/api": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
@@ -67,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200-preview.22628.1\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     }

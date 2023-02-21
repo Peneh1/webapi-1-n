@@ -1,10 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\WebAPI1toN",
-    "\\WebAPI1toN\\Data",
-    "\\WebAPI1toN\\Models"
+    ""
   ],
-  "SelectedNode": "\\WebAPI1toN\\Models\\SearchResultsModel.cs",
+  "SelectedNode": "\\WebAPI1toN.sln",
   "PreviewInSolutionExplorer": false
 }
