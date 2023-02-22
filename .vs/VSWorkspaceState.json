@@ -2,9 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\WebAPI1toN",
-    "\\WebAPI1toN\\Data",
-    "\\WebAPI1toN\\Models"
+    "\\WebAPI1toN\\Controllers"
   ],
-  "SelectedNode": "\\WebAPI1toN\\Models\\SearchResultsModel.cs",
+  "SelectedNode": "\\WebAPI1toN\\Controllers\\PagesController.cs",
   "PreviewInSolutionExplorer": false
 }
