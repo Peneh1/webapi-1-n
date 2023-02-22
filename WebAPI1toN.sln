@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SS3Library", "SS3Library\SS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI1toN", "WebAPI1toN\WebAPI1toN.csproj", "{0872D8BF-FE90-44BF-BAB6-F79D100CD5FE}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecuGenApi", "..\..\SecuGenApi\SecuGenApi\SecuGenApi\SecuGenApi.csproj", "{606A0728-BB4A-421B-8A11-3F72F9ABA2BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0872D8BF-FE90-44BF-BAB6-F79D100CD5FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0872D8BF-FE90-44BF-BAB6-F79D100CD5FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0872D8BF-FE90-44BF-BAB6-F79D100CD5FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{606A0728-BB4A-421B-8A11-3F72F9ABA2BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{606A0728-BB4A-421B-8A11-3F72F9ABA2BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{606A0728-BB4A-421B-8A11-3F72F9ABA2BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{606A0728-BB4A-421B-8A11-3F72F9ABA2BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
