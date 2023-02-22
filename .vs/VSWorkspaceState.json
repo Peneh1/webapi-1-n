@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\WebAPI1toN",
+    "\\WebAPI1toN\\Controllers"
   ],
-  "SelectedNode": "\\WebAPI1toN.sln",
+  "SelectedNode": "\\WebAPI1toN\\Controllers\\PagesController.cs",
   "PreviewInSolutionExplorer": false
 }
